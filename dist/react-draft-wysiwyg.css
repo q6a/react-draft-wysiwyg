@@ -806,6 +806,7 @@
 .rdw-editor-main {
   height: 100%;
   overflow: auto;
+  font-size: 16px;
   box-sizing: border-box;
 }
 .rdw-editor-toolbar {
