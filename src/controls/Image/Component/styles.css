@@ -4,10 +4,10 @@
   margin-bottom: 6px;
   position: relative;
 }
-.rdw-images-modal {
+.rdw-image-modal {
   position: absolute;
   top: 35px;
-  right: 5px;
+  left: 5px;
   display: flex;
   flex-direction: column;
   width: 235px;

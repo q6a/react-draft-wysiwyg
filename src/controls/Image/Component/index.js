@@ -191,7 +191,7 @@ class LayoutComponent extends Component {
     } = this.props;
     return (
       <div
-        className={classNames("rdw-images-modal", popupClassName)}
+        className={classNames("rdw-image-modal", popupClassName)}
         onClick={this.stopPropagation}
       >
         <div className="rdw-image-modal-header">
