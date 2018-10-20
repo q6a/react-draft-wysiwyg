@@ -18,18 +18,13 @@ export default class FontFamily extends Component {
     translations: PropTypes.object
   };
 
-  state: Object = {
-    expanded: undefined,
-    currentFontFamily: undefined
-  };
+  state: Object = { expanded: undefined, currentFontFamily: undefined };
 
   componentWillMount(): void {
     const { editorState, modalHandler } = this.props;
     if (editorState) {
       this.setState({
-        currentFontFamily: getSelectionCustomInlineStyle(editorState, [
-          "FONTFAMILY"
-        ]).FONTFAMILY
+        currentFontFamily: this.getCurrentFontFamily(this.props)
       });
     }
     modalHandler.registerCallBack(this.expandCollapse);
@@ -41,10 +36,7 @@ export default class FontFamily extends Component {
       this.props.editorState !== properties.editorState
     ) {
       this.setState({
-        currentFontFamily: getSelectionCustomInlineStyle(
-          properties.editorState,
-          ["FONTFAMILY"]
-        ).FONTFAMILY
+        currentFontFamily: this.getCurrentFontFamily(properties)
       });
     }
   }
@@ -53,6 +45,15 @@ export default class FontFamily extends Component {
     const { modalHandler } = this.props;
     modalHandler.deregisterCallBack(this.expandCollapse);
   }
+
+  getCurrentFontFamily = properties => {
+    const { options } = this.props.config;
+    const fontValue = getSelectionCustomInlineStyle(properties.editorState, [
+      "FONTFAMILY"
+    ]).FONTFAMILY;
+    const font = options.find(opt => `fontfamily-${opt.value}` == fontValue);
+    return font && font.name;
+  };
 
   onExpandEvent: Function = (): void => {
     this.signalExpanded = !this.state.expanded;
@@ -66,15 +67,11 @@ export default class FontFamily extends Component {
   };
 
   doExpand: Function = (): void => {
-    this.setState({
-      expanded: true
-    });
+    this.setState({ expanded: true });
   };
 
   doCollapse: Function = (): void => {
-    this.setState({
-      expanded: false
-    });
+    this.setState({ expanded: false });
   };
 
   toggleFontFamily: Function = (fontFamily: string) => {
@@ -93,7 +90,7 @@ export default class FontFamily extends Component {
     const { config, translations } = this.props;
     const { expanded, currentFontFamily } = this.state;
     const FontFamilyComponent = config.component || LayoutComponent;
-    const fontFamily = currentFontFamily && currentFontFamily.substring(11);
+    const fontFamily = currentFontFamily;
     return (
       <FontFamilyComponent
         translations={translations}
