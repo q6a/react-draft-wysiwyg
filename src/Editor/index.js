@@ -406,7 +406,10 @@ export default class WysiwygEditor extends Component {
   };
 
   handleKeyCommand: Function = (command: Object): boolean => {
-    const { editorState, toolbar: { inline } } = this.state;
+    const {
+      editorState,
+      toolbar: { inline }
+    } = this.state;
     if (inline && inline.options.indexOf(command) >= 0) {
       const newState = RichUtils.handleKeyCommand(editorState, command);
       if (newState) {

@@ -1,13 +1,13 @@
 /* @flow */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import {
   toggleCustomInlineStyle,
-  getSelectionCustomInlineStyle,
-} from 'draftjs-utils';
+  getSelectionCustomInlineStyle
+} from "draftjs-utils";
 
-import LayoutComponent from './Component';
+import LayoutComponent from "./Component";
 
 export default class FontFamily extends Component {
   static propTypes = {
@@ -15,30 +15,36 @@ export default class FontFamily extends Component {
     editorState: PropTypes.object,
     modalHandler: PropTypes.object,
     config: PropTypes.object,
-    translations: PropTypes.object,
+    translations: PropTypes.object
   };
 
   state: Object = {
     expanded: undefined,
-    currentFontFamily: undefined,
+    currentFontFamily: undefined
   };
 
   componentWillMount(): void {
     const { editorState, modalHandler } = this.props;
     if (editorState) {
       this.setState({
-        currentFontFamily: getSelectionCustomInlineStyle(editorState, ['FONTFAMILY']).FONTFAMILY,
+        currentFontFamily: getSelectionCustomInlineStyle(editorState, [
+          "FONTFAMILY"
+        ]).FONTFAMILY
       });
     }
     modalHandler.registerCallBack(this.expandCollapse);
   }
 
   componentWillReceiveProps(properties: Object): void {
-    if (properties.editorState &&
-      this.props.editorState !== properties.editorState) {
+    if (
+      properties.editorState &&
+      this.props.editorState !== properties.editorState
+    ) {
       this.setState({
-        currentFontFamily:
-          getSelectionCustomInlineStyle(properties.editorState, ['FONTFAMILY']).FONTFAMILY,
+        currentFontFamily: getSelectionCustomInlineStyle(
+          properties.editorState,
+          ["FONTFAMILY"]
+        ).FONTFAMILY
       });
     }
   }
@@ -54,20 +60,20 @@ export default class FontFamily extends Component {
 
   expandCollapse: Function = (): void => {
     this.setState({
-      expanded: this.signalExpanded,
+      expanded: this.signalExpanded
     });
     this.signalExpanded = false;
-  }
+  };
 
   doExpand: Function = (): void => {
     this.setState({
-      expanded: true,
+      expanded: true
     });
   };
 
   doCollapse: Function = (): void => {
     this.setState({
-      expanded: false,
+      expanded: false
     });
   };
 
@@ -75,8 +81,8 @@ export default class FontFamily extends Component {
     const { editorState, onChange } = this.props;
     const newState = toggleCustomInlineStyle(
       editorState,
-      'fontFamily',
-      fontFamily,
+      "fontFamily",
+      fontFamily
     );
     if (newState) {
       onChange(newState);

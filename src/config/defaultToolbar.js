@@ -98,12 +98,24 @@ export default {
   },
   fontFamily: {
     options: [
-      "Arial",
-      "Georgia",
-      "Impact",
-      "Tahoma",
-      "Times New Roman",
-      "Verdana"
+      { name: "Arial", value: "Arial" },
+      {
+        name: "Georgia",
+        value: "Georgia"
+      },
+      {
+        name: "Impact",
+        value: "Impact"
+      },
+      {
+        name: "Tahoma",
+        value: "Tahoma"
+      },
+      {
+        name: "Times New Roman",
+        value: "Times New Roman"
+      },
+      { name: "Verdana", value: "Verdana" }
     ],
     className: undefined,
     component: undefined,
