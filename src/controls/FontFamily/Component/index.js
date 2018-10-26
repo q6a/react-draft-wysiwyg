@@ -55,8 +55,10 @@ class LayoutComponent extends Component {
         defaultFontFamily &&
         options.some(
           opt =>
-            opt.name.toLowerCase() === defaultFontFamily.toLowerCase() ||
-            opt.value.toLowerCase() === defaultFontFamily.toLowerCase()
+            (opt.name && opt.name.toLowerCase()) ===
+              defaultFontFamily.toLowerCase() ||
+            (opt.value && opt.value.toLowerCase()) ===
+              defaultFontFamily.toLowerCase()
         ) &&
         defaultFontFamily);
     return (
