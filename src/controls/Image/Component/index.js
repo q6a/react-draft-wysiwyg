@@ -252,7 +252,7 @@ class LayoutComponent extends Component {
             <input
               type="file"
               id="file"
-              accept={inputAccept}
+              // accept={inputAccept}
               onChange={this.selectImage}
               className="rdw-image-modal-upload-option-input"
             />
