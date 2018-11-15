@@ -86,9 +86,9 @@ const getImageComponent = config => class Image extends Component {
     const entity = contentState.getEntity(block.getEntityAt(0));
     const { src, alignment, height, width, alt } = entity.getData();
     const extension = (src.split('.')).pop();
-    const isImage = ['.ai', '.gif', '.webp', '.bmp', '.djvu', '.ps', '.ept', '.eps', '.eps3', '.flif', '.gif', '.heif', '.heic', '.ico', '.jpg', '.jpe', '.jpeg', '.jpc', '.jp2', '.j2k', '.wdp', '.jxr',  '.hdp', '.pdf', '.png', '.psd', '.arw',  '.cr2', '.svg', '.tga', '.tif', '.tiff', '.webp', ].includes(extension);
+    const isImage = ['ai', 'gif', 'webp', 'bmp', 'djvu', 'ps', 'ept', 'eps', 'eps3', 'flif', 'gif', 'heif', 'heic', 'ico', 'jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',  'hdp', 'pdf', 'png', 'psd', 'arw',  'cr2', 'svg', 'tga', 'tif', 'tiff', 'webp', ].includes(extension);
     const isVideo = ['mp4', 'webm', 'flv', 'mov', 'ogv', '3gp', '3g2', 'wmv', 'mpeg', 'flv', 'mkv', 'avi'].includes(extension);
-    const isAudio = ['mp3', '.3gp', '.aac', '.flac', '.m4a', 'ogg', '.wav', '.webm', '.raw'].includes(extension);
+    const isAudio = ['mp3', '3gp', 'aac', 'flac', 'm4a', 'ogg', 'wav', 'webm', 'raw'].includes(extension);
     return (
       <span
         onMouseEnter={this.toggleHovered}
