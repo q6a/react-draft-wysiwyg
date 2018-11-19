@@ -20,20 +20,34 @@ class LayoutComponent extends Component {
 
   state: Object = {
     currentStyle: 'color',
+    color: ''
   };
 
   componentWillReceiveProps(props) {
     if (!this.props.expanded && props.expanded) {
       this.setState({
         currentStyle: 'color',
+        color: ''
       });
     }
   }
 
   onChange: Function = (color: string): void => {
     const { onChange } = this.props;
-    const { currentStyle } = this.state;
-    onChange(currentStyle, color);
+    const { currentStyle, color: prevColor } = this.state;
+    const colorString = currentStyle === 'color' ? 'rgb(0,0,0)' : 'rgb(255,255,255)';
+    if (color === prevColor) {
+      onChange(currentStyle, colorString);
+      this.setState({
+        color: colorString
+      });
+    }
+    else {
+      onChange(currentStyle, color);
+      this.setState({
+        color
+      });
+    }
   }
 
   setCurrentStyleColor: Function = (): void => {
