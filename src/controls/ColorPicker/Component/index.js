@@ -26,8 +26,7 @@ class LayoutComponent extends Component {
   componentWillReceiveProps(props) {
     if (!this.props.expanded && props.expanded) {
       this.setState({
-        currentStyle: 'color',
-        color: ''
+        currentStyle: 'color'
       });
     }
   }

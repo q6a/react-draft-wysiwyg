@@ -133,8 +133,8 @@ const getImageComponent = config => class Image extends Component {
                         src={src}
                         controls
                         style={{
-                            height,
-                            width,
+                            height: 100,
+                            width: 1000,
                         }}
                     />
                 )
